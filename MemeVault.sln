@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeVault", "MemeVault.csproj", "{A57AAED3-1462-4C3A-8278-70FF22A94C3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessComponent", "Data\DataAccessComponent\DataAccessComponent.csproj", "{E99F6C33-19FD-6A31-3130-691F5B68D28D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectLibrary", "Data\ObjectLibrary\ObjectLibrary.csproj", "{A8048596-48F9-EE3A-F6A6-FAA65D892E7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A57AAED3-1462-4C3A-8278-70FF22A94C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57AAED3-1462-4C3A-8278-70FF22A94C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57AAED3-1462-4C3A-8278-70FF22A94C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57AAED3-1462-4C3A-8278-70FF22A94C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99F6C33-19FD-6A31-3130-691F5B68D28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99F6C33-19FD-6A31-3130-691F5B68D28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99F6C33-19FD-6A31-3130-691F5B68D28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99F6C33-19FD-6A31-3130-691F5B68D28D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8048596-48F9-EE3A-F6A6-FAA65D892E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8048596-48F9-EE3A-F6A6-FAA65D892E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8048596-48F9-EE3A-F6A6-FAA65D892E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8048596-48F9-EE3A-F6A6-FAA65D892E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E99F6C33-19FD-6A31-3130-691F5B68D28D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{A8048596-48F9-EE3A-F6A6-FAA65D892E7A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41E75091-1796-46B3-8766-769948F46217}
+	EndGlobalSection
+EndGlobal
