@@ -1345,6 +1345,9 @@ namespace MemeVault
             // local
             int count = 0;
 
+            // Hide them all
+            UIVisibility(false);
+
             // If the results collection exists and has one or more items
             if (ListHelper.HasOneOrMoreItems(results))
             {
@@ -1401,21 +1404,20 @@ namespace MemeVault
             // Set Index
             IndexedOnSaveCheckBox.Checked = Admin.IndexOnSave;
 
-            // only go into here if it exists
-            if (Results1 != null)
-            {
-                // Setup the Listeners
-                Results1.Listener = this;
-                Results2.Listener = this;
-                Results3.Listener = this;
-                Results4.Listener = this;
-                Results5.Listener = this;
-                Results6.Listener = this;
-                Results7.Listener = this;
-                Results8.Listener = this;
-                Results9.Listener = this;
-                Results10.Listener = this;
-            }
+            // Setup the Listeners
+            Results1.Listener = this;
+            Results2.Listener = this;
+            Results3.Listener = this;
+            Results4.Listener = this;
+            Results5.Listener = this;
+            Results6.Listener = this;
+            Results7.Listener = this;
+            Results8.Listener = this;
+            Results9.Listener = this;
+            Results10.Listener = this;
+
+            // Hide them all
+            UIVisibility(false);
         }
         #endregion
 
@@ -1436,48 +1438,62 @@ namespace MemeVault
 
                 // if deleted
                 if (deleted)
-                {
+                {  
                     // Clone the image
                     Image copy = SelectedImage.Clone();
 
                     // Remove this image
-                    int index = AllImages.IndexOf(SelectedImage);
+                    int index = AllImages.FindIndex(x => x.Id == SelectedImage.Id);
 
-                    // if the Index is too high
-                    if (SelectedImageIndex >= AllImagesCount)
+                    // ensure in range
+                    if (NumericHelper.IsInRange(index, 0, AllImagesCount -1))
                     {
-                        // Set to the last item
-                        SelectedImageIndex = AllImagesCount - 1;
+                        // Remove this image
+                        AllImages.RemoveAt(index);
+
+                        // Remove
+                        ImagePreview.BackgroundImage = null;
+
+                        // Erase
+                        SelectedImage = null;
+                        SelectedImageIndex = -1;
+
+                        // Must be erased before advancing to next image
+                        SelectedAlternate = null;
+
+                        // if Image Out of Context
+                        if (ImageOutOfContext && ReturnToSearchOnSave.Checked)
+                        {
+                            // Return to search
+                            SearchMode.Checked = true;
+
+                            // Exit imageOutOfContext Mode
+                            imageOutOfContext = false;
+
+                            // Return to search
+                            UIVisibility(false);
+
+                            // Return to search
+                            UIEnable();
+                        }
+                        else
+                        {
+                            // Set the SelectedImage
+                            DisplayIndexStats();
+
+                            // Reserialize
+                            SelectedImageHash = "";
+
+                            // Show a message
+                            StatusLabel.Text = "Image Deleted.";
+
+                            // Handle buttons
+                            UIEnable();
+                        }
+
+                        // Delete the file on disk
+                        File.Delete(copy.Path);
                     }
-
-                    // Remove this image
-                    AllImages.RemoveAt(index);
-
-                    // Remove
-                    ImagePreview.BackgroundImage = null;
-
-                    // Erase
-                    SelectedImage = null;
-
-                    // Must be erased before advancing to next image
-                    SelectedAlternate = null;
-
-                    // Set the SelectedImage
-                    DisplayIndexStats();
-
-                    // Reserialize
-                    SelectedImageHash = Morpheus.Serialize(SelectedImage);
-
-                    // Show a message
-                    StatusLabel.Text = "Image Deleted.";
-
-                    // Handle buttons
-                    UIEnable();
-
-
-
-                    // Delete the file on disk
-                    File.Delete(copy.Path);
                 }
             }
         }
@@ -1691,28 +1707,28 @@ namespace MemeVault
                     MovePreviousButton.Enabled = enableMovePrevious;
                     MoveNextButton.Enabled = enableMoveNext;
                     MoveLastButton.Enabled = enableMoveNext;
-
-                    // All Disabled
-                    AddButton.Enabled = true;
-                    EditButton.Enabled = true;
-                    DeleteButton.Enabled = true;
-                    SelectedAlternateLabel.Visible = HasSelectedAlternate;
-                    SelectedAlternateControl.Visible = HasSelectedAlternate;
-                    SelectedAlternateControl.Enabled = (EditMode != EditTypeEnum.DisplayOnly);
-                    AlternatesLabel.Visible = true;
-                    AlternatesListBox.Visible = true;
-                    AddButton.Visible = true;
-                    EditButton.Visible = true;
-                    DeleteButton.Visible = true;
-                    IndexedCheckBox.Visible = true;
-
-                    // Add is Enabled
-                    AddButton.Enabled = true;
-
-                    // if the value for HasSelectedAlternate is true
-                    EditButton.Enabled = HasSelectedAlternate;
-                    DeleteButton.Enabled = HasSelectedAlternate;
                 }
+
+                // All Disabled
+                AddButton.Enabled = true;
+                EditButton.Enabled = true;
+                DeleteButton.Enabled = true;
+                SelectedAlternateLabel.Visible = HasSelectedAlternate;
+                SelectedAlternateControl.Visible = HasSelectedAlternate;
+                SelectedAlternateControl.Enabled = (EditMode != EditTypeEnum.DisplayOnly);
+                AlternatesLabel.Visible = true;
+                AlternatesListBox.Visible = true;
+                AddButton.Visible = true;
+                EditButton.Visible = true;
+                DeleteButton.Visible = true;
+                IndexedCheckBox.Visible = true;
+
+                // Add is Enabled
+                AddButton.Enabled = true;
+
+                // if the value for HasSelectedAlternate is true
+                EditButton.Enabled = HasSelectedAlternate;
+                DeleteButton.Enabled = HasSelectedAlternate;
             }
             else
             {

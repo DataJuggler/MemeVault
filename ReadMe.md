@@ -93,3 +93,5 @@ Index Mode
 
 The first time you click on Index mode each session, this will scan the directory of your Meme folder
 and save any new images if found. 
+
+More To Come. Have To Work.

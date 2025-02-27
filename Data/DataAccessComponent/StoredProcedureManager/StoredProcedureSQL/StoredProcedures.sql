@@ -6,7 +6,7 @@ Go
 -- =========================================================
 -- Procure Name: Admin_Insert
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Insert a new Admin
 -- =========================================================
 
@@ -66,7 +66,7 @@ Go
 -- =========================================================
 -- Procure Name: Admin_Update
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Update an existing Admin
 -- =========================================================
 
@@ -128,7 +128,7 @@ Go
 -- =========================================================
 -- Procure Name: Admin_Find
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Find an existing Admin
 -- =========================================================
 
@@ -185,7 +185,7 @@ Go
 -- =========================================================
 -- Procure Name: Admin_Delete
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Delete an existing Admin
 -- =========================================================
 
@@ -239,7 +239,7 @@ Go
 -- =========================================================
 -- Procure Name: Admin_FetchAll
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Returns all Admin objects
 -- =========================================================
 
@@ -290,7 +290,7 @@ Go
 -- =========================================================
 -- Procure Name: Alternate_Insert
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Insert a new Alternate
 -- =========================================================
 
@@ -349,7 +349,7 @@ Go
 -- =========================================================
 -- Procure Name: Alternate_Update
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Update an existing Alternate
 -- =========================================================
 
@@ -409,7 +409,7 @@ Go
 -- =========================================================
 -- Procure Name: Alternate_Find
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Find an existing Alternate
 -- =========================================================
 
@@ -466,7 +466,7 @@ Go
 -- =========================================================
 -- Procure Name: Alternate_Delete
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Delete an existing Alternate
 -- =========================================================
 
@@ -520,7 +520,7 @@ Go
 -- =========================================================
 -- Procure Name: Alternate_FetchAll
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Returns all Alternate objects
 -- =========================================================
 
@@ -571,7 +571,7 @@ Go
 -- =========================================================
 -- Procure Name: Image_Insert
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Insert a new Image
 -- =========================================================
 
@@ -631,7 +631,7 @@ Go
 -- =========================================================
 -- Procure Name: Image_Update
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Update an existing Image
 -- =========================================================
 
@@ -693,7 +693,7 @@ Go
 -- =========================================================
 -- Procure Name: Image_Find
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Find an existing Image
 -- =========================================================
 
@@ -750,7 +750,7 @@ Go
 -- =========================================================
 -- Procure Name: Image_Delete
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Delete an existing Image
 -- =========================================================
 
@@ -804,7 +804,7 @@ Go
 -- =========================================================
 -- Procure Name: Image_FetchAll
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Returns all Image objects
 -- =========================================================
 
@@ -855,7 +855,7 @@ Go
 -- =========================================================
 -- Procure Name: ImageView_FetchAll
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Returns all ImageView objects
 -- =========================================================
 
@@ -909,7 +909,7 @@ Go
 -- =========================================================
 -- Procure Name: Image_FindByName
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Find an existing Image for the Name given.
 -- =========================================================
 
@@ -966,7 +966,7 @@ Go
 -- =========================================================
 -- Procure Name: Alternate_FetchAllForImageId
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
+-- Create Date:   2/26/2025
 -- Description:    Returns all Alternate objects for the ImageId given.
 -- =========================================================
 
@@ -1022,37 +1022,95 @@ set ANSI_NULLS ON
 set QUOTED_IDENTIFIER ON
 Go
 -- =========================================================
--- Procure Name: ImageView_Search
+-- Procure Name: Image_FetchAllForSearch
 -- Author:           Data Juggler - Data Tier.Net Procedure Generator
--- Create Date:   2/24/2025
--- Description:    Returns all ImageView objects for the Name given.
+-- Create Date:   2/26/2025
+-- Description:    Returns all Image objects for the Name given.
 -- =========================================================
 
 -- Check if the procedure already exists
-IF EXISTS (select * from syscomments where id = object_id ('ImageView_Search'))
+IF EXISTS (select * from syscomments where id = object_id ('Image_FetchAllForSearch'))
 
     -- Procedure Does Exist, Drop First
     BEGIN
 
         -- Execute Drop
-        Drop Procedure ImageView_Search
+        Drop Procedure Image_FetchAllForSearch
 
         -- Test if procedure was dropped
-        IF OBJECT_ID('dbo.ImageView_Search') IS NOT NULL
+        IF OBJECT_ID('dbo.Image_FetchAllForSearch') IS NOT NULL
 
             -- Print Line Drop Failed
-            PRINT '<<< Drop Failed On Procedure ImageView_Search >>>'
+            PRINT '<<< Drop Failed On Procedure Image_FetchAllForSearch >>>'
 
         Else
 
             -- Print Line Procedure Dropped
-            PRINT '<<< Drop Suceeded On Procedure ImageView_Search >>>'
+            PRINT '<<< Drop Suceeded On Procedure Image_FetchAllForSearch >>>'
 
     End
 
 GO
 
-Create PROCEDURE ImageView_Search
+Create PROCEDURE Image_FetchAllForSearch
+
+    -- Create @Name Paramater
+    @Name nvarchar(50)
+
+
+AS
+BEGIN
+
+    -- SET NOCOUNT ON added to prevent extra result sets from
+    -- interfering with SELECT statements.
+    SET NOCOUNT ON
+
+    -- Begin Select Statement
+    Select [Id],[Indexed],[Name],[Path]
+
+    -- From tableName
+    From [Image]
+
+    -- Load Matching Records
+    Where [Name] = @Name
+
+END
+
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+Go
+-- =========================================================
+-- Procure Name: ImageView_FetchAllForSearch
+-- Author:           Data Juggler - Data Tier.Net Procedure Generator
+-- Create Date:   2/26/2025
+-- Description:    Returns all ImageView objects for the Name given.
+-- =========================================================
+
+-- Check if the procedure already exists
+IF EXISTS (select * from syscomments where id = object_id ('ImageView_FetchAllForSearch'))
+
+    -- Procedure Does Exist, Drop First
+    BEGIN
+
+        -- Execute Drop
+        Drop Procedure ImageView_FetchAllForSearch
+
+        -- Test if procedure was dropped
+        IF OBJECT_ID('dbo.ImageView_FetchAllForSearch') IS NOT NULL
+
+            -- Print Line Drop Failed
+            PRINT '<<< Drop Failed On Procedure ImageView_FetchAllForSearch >>>'
+
+        Else
+
+            -- Print Line Procedure Dropped
+            PRINT '<<< Drop Suceeded On Procedure ImageView_FetchAllForSearch >>>'
+
+    End
+
+GO
+
+Create PROCEDURE ImageView_FetchAllForSearch
 
     -- Create @Name Paramater
     @Name nvarchar(50)
