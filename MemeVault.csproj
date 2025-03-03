@@ -33,11 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="Data\DataAccessComponent\DataAccessComponent.csproj" />
-    <ProjectReference Include="Data\ObjectLibrary\ObjectLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -54,6 +49,11 @@
 
   <ItemGroup>
     <Folder Include="SQL\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Data\DataAccessComponent\DataAccessComponent.csproj" />
+    <ProjectReference Include="Data\ObjectLibrary\ObjectLibrary.csproj" />
   </ItemGroup>
 
 </Project>

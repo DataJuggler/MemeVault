@@ -491,32 +491,6 @@ namespace DataAccessComponent.DataGateway
             }
             #endregion
 
-            #region LoadImagesForSearch(string searchText)
-            /// <summary>
-            /// This method is used to load 'Image' objects for the Name given.
-            /// </summary>
-            public List<Image> LoadImagesForSearch(string searchText)
-            {
-                // initial value
-                List<Image> images = null;
-                
-                // Create a temp Image object
-                Image tempImage = new Image();
-                
-                // Set the value for LoadBySearch to true
-                tempImage.LoadBySearch = true;
-                
-                // Set the value for Name
-                tempImage.Name = searchText;
-                
-                // Perform the load
-                images = LoadImages(tempImage);
-                
-                // return value
-                return images;
-            }
-            #endregion
-            
             #region LoadImageViews(ImageView tempImageView = null)
             /// <summary>
             /// This method loads a collection of 'ImageView' objects.
@@ -551,7 +525,7 @@ namespace DataAccessComponent.DataGateway
                 ImageView tempImageView = new ImageView();
                 
                 // Set the value for LoadBySearch to true
-                tempImageView.LoadBySearch = true;
+                tempImageView.LoadForSearch = true;
                 
                 // Set the value for Name
                 tempImageView.Name = searchText;

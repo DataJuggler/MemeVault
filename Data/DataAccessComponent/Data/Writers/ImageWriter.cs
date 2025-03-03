@@ -25,35 +25,45 @@ namespace DataAccessComponent.Data.Writers
 
         #region Static Methods
 
-            #region CreateFetchAllImagesStoredProcedure(Image image)
+            #region CreateFindImageStoredProcedure(Image image)
             /// <summary>
             /// This method creates an instance of a
-            /// 'FetchAllImagesStoredProcedure' object and
+            /// 'FindImageStoredProcedure' object and
             /// creates the sql parameter[] array needed
-            /// to execute the procedure 'Image_FetchAll'.
+            /// to execute the procedure 'Image_Find'.
             /// </summary>
-            /// <returns>An instance of a(n) 'FetchAllImagesStoredProcedure' object.</returns>
-            public static new FetchAllImagesStoredProcedure CreateFetchAllImagesStoredProcedure(Image image)
+            /// <param name="image">The 'Image' to use to
+            /// get the primary key parameter.</param>
+            /// <returns>An instance of an FetchUserStoredProcedure</returns>
+            public static new FindImageStoredProcedure CreateFindImageStoredProcedure(Image image)
             {
-                // Initial value
-                FetchAllImagesStoredProcedure fetchAllImagesStoredProcedure = new FetchAllImagesStoredProcedure();
+                // Initial Value
+                FindImageStoredProcedure findImageStoredProcedure = null;
 
-                // if the image object exists
-                if (image != null)
+                // verify image exists
+                if(image != null)
                 {
-                    // if LoadBySearch is true
-                    if (image.LoadBySearch)
+                    // Instanciate findImageStoredProcedure
+                    findImageStoredProcedure = new FindImageStoredProcedure();
+
+                    // if image.FindByName is true
+                    if (image.FindByName)
                     {
-                        // Change the procedure name
-                        fetchAllImagesStoredProcedure.ProcedureName = "Image_FetchAllForSearch";
-                        
-                        // Create the @Name parameter
-                        fetchAllImagesStoredProcedure.Parameters = SqlParameterHelper.CreateSqlParameters("@Name", image.Name);
+                            // Change the procedure name
+                            findImageStoredProcedure.ProcedureName = "Image_FindByName";
+                            
+                            // Create the @Name parameter
+                            findImageStoredProcedure.Parameters = SqlParameterHelper.CreateSqlParameters("@Name", image.Name);
+                    }
+                    else
+                    {
+                        // Now create parameters for this procedure
+                        findImageStoredProcedure.Parameters = CreatePrimaryKeyParameter(image);
                     }
                 }
-                
+
                 // return value
-                return fetchAllImagesStoredProcedure;
+                return findImageStoredProcedure;
             }
             #endregion
             

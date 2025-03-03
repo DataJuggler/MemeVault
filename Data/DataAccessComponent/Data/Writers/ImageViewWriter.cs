@@ -41,14 +41,14 @@ namespace DataAccessComponent.Data.Writers
                 // if the imageView object exists
                 if (imageView != null)
                 {
-                    // if LoadBySearch is true
-                    if (imageView.LoadBySearch)
-                    {  
+                    // if LoadForSearch is true
+                    if (imageView.LoadForSearch)
+                    {
                         // Change the procedure name
                         fetchAllImageViewsStoredProcedure.ProcedureName = "ImageView_FetchAllForSearch";
                         
                         // Create the @Name parameter
-                        fetchAllImageViewsStoredProcedure.Parameters = SqlParameterHelper.CreateSqlParameters("@SearchText", imageView.Name);
+                        fetchAllImageViewsStoredProcedure.Parameters = SqlParameterHelper.CreateSqlParameters("@searchText", imageView.Name);
                     }
                 }
                 

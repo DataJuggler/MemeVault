@@ -18,7 +18,6 @@ namespace ObjectLibrary.BusinessObjects
         #region Private Variables
         private List<Alternate> alternates;
         private bool findByName;
-        private bool loadBySearch;
         #endregion
 
         #region Constructor
@@ -39,6 +38,16 @@ namespace ObjectLibrary.BusinessObjects
 
                 // Return Cloned Object
                 return newImage;
+            }
+            #endregion
+
+            #region ToString()
+            /// <summary>
+            /// method returns the String
+            /// </summary>
+            public override string ToString()
+            {
+                return Name;
             }
             #endregion
 
@@ -67,7 +76,7 @@ namespace ObjectLibrary.BusinessObjects
                 set { findByName = value; }
             }
             #endregion
-            
+
             #region HasAlternates
             /// <summary>
             /// This property returns true if this object has an 'Alternates'.
@@ -85,17 +94,6 @@ namespace ObjectLibrary.BusinessObjects
             }
             #endregion
             
-            #region LoadBySearch
-            /// <summary>
-            /// This property gets or sets the value for 'LoadBySearch'.
-            /// </summary>
-            public bool LoadBySearch
-            {
-                get { return loadBySearch; }
-                set { loadBySearch = value; }
-            }
-            #endregion
-
         #endregion
 
     }

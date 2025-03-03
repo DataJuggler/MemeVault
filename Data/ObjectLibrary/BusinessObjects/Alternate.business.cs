@@ -21,6 +21,7 @@ namespace ObjectLibrary.BusinessObjects
         #region Constructor
         public Alternate()
         {
+
         }
         #endregion
 
@@ -43,29 +44,19 @@ namespace ObjectLibrary.BusinessObjects
             /// </summary>
             public override string ToString()
             {
-                string name = "";
-
-                // If the Name object exists
-                if (Name != null)
-                {
-                    // Set the return value
-                    name = Name;
-                }
-
-                // return the Name when ToString is called
-                return name;
+                return Name;
             }
             #endregion
             
         #endregion
 
         #region Properties
-        
-        #region LoadByImageId
-        /// <summary>
-        /// This property gets or sets the value for 'LoadByImageId'.
-        /// </summary>
-        public bool LoadByImageId
+
+            #region LoadByImageId
+            /// <summary>
+            /// This property gets or sets the value for 'LoadByImageId'.
+            /// </summary>
+            public bool LoadByImageId
             {
                 get { return loadByImageId; }
                 set { loadByImageId = value; }

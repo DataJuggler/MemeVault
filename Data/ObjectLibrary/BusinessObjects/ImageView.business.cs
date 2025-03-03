@@ -15,7 +15,7 @@ namespace ObjectLibrary.BusinessObjects
     {
 
         #region Private Variables
-        private bool loadBySearch;
+        private bool loadForSearch;
         #endregion
 
         #region Constructor
@@ -42,14 +42,14 @@ namespace ObjectLibrary.BusinessObjects
 
         #region Properties
 
-            #region LoadBySearch
+            #region LoadForSearch
             /// <summary>
-            /// This property gets or sets the value for 'LoadBySearch'.
+            /// This property gets or sets the value for 'LoadForSearch'.
             /// </summary>
-            public bool LoadBySearch
+            public bool LoadForSearch
             {
-                get { return loadBySearch; }
-                set { loadBySearch = value; }
+                get { return loadForSearch; }
+                set { loadForSearch = value; }
             }
             #endregion
 
