@@ -1052,19 +1052,26 @@ namespace MemeVault
                         // set the index
                         index++;
 
-                        // Add this item
-                        AlternatesListBox.Items.Add(alternate);
-
-                        // If the value for the property .HasSelectedAlternate is true
-                        if ((HasSelectedAlternate) && (alternate.Name == SelectedAlternate.Name))
+                        // if the Alternate name exists
+                        if (TextHelper.Exists(alternate.Name))
                         {
-                            // Set the selectedIndex
-                            selectedIndex = index;
+                            // Add this item
+                            AlternatesListBox.Items.Add(alternate);
+
+                            // If the value for the property .HasSelectedAlternate is true
+                            if ((HasSelectedAlternate) && (alternate.Name == SelectedAlternate.Name))
+                            {
+                                // Set the selectedIndex
+                                selectedIndex = index;
+                            }
                         }
                     }
 
-                    // Set the SelectedIndex
-                    AlternatesListBox.SelectedIndex = selectedIndex;
+                    if (selectedIndex >= 0)
+                    {
+                        // Set the SelectedIndex
+                        AlternatesListBox.SelectedIndex = selectedIndex;
+                    }
                 }
             }
         }
@@ -1093,7 +1100,7 @@ namespace MemeVault
                     if (OnlyNotIndexedCheckBox.Checked)
                     {
                         // if was passed in to this method
-                        if (selectedImageIndex > 0)
+                        if (selectedImageIndex >= 0)
                         {
                             // Ensure Index Exists
                             if (NumericHelper.IsInRange(selectedImageIndex, 0, UnindexedImagesCount))
@@ -1127,7 +1134,7 @@ namespace MemeVault
                     else
                     {
                         // if was passed in to this method
-                        if (selectedImageIndex > 0)
+                        if (selectedImageIndex >= 0)
                         {
                             // Ensure Index Exists
                             if (NumericHelper.IsInRange(selectedImageIndex, 0, AllImagesCount))
