@@ -1067,10 +1067,17 @@ namespace MemeVault
                         }
                     }
 
-                    if (selectedIndex >= 0)
+
+                    // if in range
+                    if (NumericHelper.IsInRange(selectedIndex, 0, AlternatesListBox.Items.Count - 1))
                     {
                         // Set the SelectedIndex
                         AlternatesListBox.SelectedIndex = selectedIndex;
+                    }
+                    else
+                    {
+                        // Nothing Selected
+                        AlternatesListBox.SelectedIndex = -1;
                     }
                 }
             }
@@ -1463,7 +1470,14 @@ namespace MemeVault
 
                         // Erase
                         SelectedImage = null;
-                        SelectedImageIndex = -1;
+                        SelectedImageIndex = SelectedImageIndex -1;
+
+                        // if less than zero
+                        if (SelectedImageIndex < 0)
+                        {
+                            // reset
+                            SelectedImageIndex = 0;
+                        }
 
                         // Must be erased before advancing to next image
                         SelectedAlternate = null;
