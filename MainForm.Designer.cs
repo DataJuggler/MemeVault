@@ -703,7 +703,7 @@ namespace MemeVault
             // 
             // MoveLastButton
             // 
-            MoveLastButton.BackgroundImage = Properties.Resources.VCRMoveLastGray;
+            MoveLastButton.BackgroundImage = (Image)resources.GetObject("MoveLastButton.BackgroundImage");
             MoveLastButton.BackgroundImageLayout = ImageLayout.Stretch;
             MoveLastButton.Location = new Point(627, 8);
             MoveLastButton.Name = "MoveLastButton";
@@ -717,7 +717,7 @@ namespace MemeVault
             // 
             // MoveNextButton
             // 
-            MoveNextButton.BackgroundImage = Properties.Resources.VCRMoveNextGray;
+            MoveNextButton.BackgroundImage = (Image)resources.GetObject("MoveNextButton.BackgroundImage");
             MoveNextButton.BackgroundImageLayout = ImageLayout.Stretch;
             MoveNextButton.Location = new Point(557, 8);
             MoveNextButton.Name = "MoveNextButton";
@@ -731,7 +731,7 @@ namespace MemeVault
             // 
             // MovePreviousButton
             // 
-            MovePreviousButton.BackgroundImage = Properties.Resources.VCRMovePreviousMin;
+            MovePreviousButton.BackgroundImage = (Image)resources.GetObject("MovePreviousButton.BackgroundImage");
             MovePreviousButton.BackgroundImageLayout = ImageLayout.Stretch;
             MovePreviousButton.Location = new Point(487, 8);
             MovePreviousButton.Name = "MovePreviousButton";
@@ -745,7 +745,7 @@ namespace MemeVault
             // 
             // MoveFirstButton
             // 
-            MoveFirstButton.BackgroundImage = Properties.Resources.VCRMoveFirstGray;
+            MoveFirstButton.BackgroundImage = (Image)resources.GetObject("MoveFirstButton.BackgroundImage");
             MoveFirstButton.BackgroundImageLayout = ImageLayout.Stretch;
             MoveFirstButton.Location = new Point(415, 8);
             MoveFirstButton.Name = "MoveFirstButton";
@@ -922,7 +922,7 @@ namespace MemeVault
             // MainForm
             // 
             AutoScaleMode = AutoScaleMode.None;
-            BackgroundImage = Properties.Resources.BlackImage;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1156, 806);
             Controls.Add(RescanButton);

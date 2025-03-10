@@ -63,9 +63,29 @@ namespace MemeVault.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AllCaughtUp {
+            get {
+                object obj = ResourceManager.GetObject("AllCaughtUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BlackImage {
             get {
                 object obj = ResourceManager.GetObject("BlackImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoImagesFound {
+            get {
+                object obj = ResourceManager.GetObject("NoImagesFound", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

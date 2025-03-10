@@ -914,6 +914,13 @@ namespace MemeVault
 
                 // Display 1 of 257 (for example)
                 DisplayIndexStats();
+
+                // if there are not images
+                if (AllImagesCount == 0)
+                {
+                    // Show all caught up
+                    ImagePreview.BackgroundImage = Properties.Resources.AllCaughtUp;
+                }
             }
 
             // Enable or disable controls
@@ -1108,67 +1115,92 @@ namespace MemeVault
                 }
                 else
                 {
-                    // if Only
+                    // if Not Indexed Are Shown
                     if (OnlyNotIndexedCheckBox.Checked)
                     {
-                        // if was passed in to this method
-                        if (selectedImageIndex >= 0)
+                        if (UnindexedImagesCount > 0)
                         {
-                            // Ensure Index Exists
-                            if (NumericHelper.IsInRange(selectedImageIndex, 0, UnindexedImagesCount))
+                            // if was passed in to this method
+                            if (selectedImageIndex >= 0)
                             {
-                                // Set the Property
-                                SelectedImageIndex = selectedImageIndex;
+                                // Ensure Index Exists
+                                if (NumericHelper.IsInRange(selectedImageIndex, 0, UnindexedImagesCount))
+                                {
+                                    // Set the Property
+                                    SelectedImageIndex = selectedImageIndex;
+                                }
+                                else
+                                {
+                                    // Reset to 0
+                                    SelectedImageIndex = 0;
+                                }
                             }
-                            else
+
+                            if (SelectedImageIndex >= UnindexedImagesCount)
                             {
-                                // Reset to 0
-                                SelectedImageIndex = 0;
+                                // Subtract 1
+                                SelectedImageIndex = UnindexedImagesCount - 1;
+                            }
+
+                            // Setup the labels
+                            ImageStatsLabel.Text = "Image " + (SelectedImageIndex + 1) + " of " + UnindexedImagesCount;
+
+                            // if the index is in range
+                            if (NumericHelper.IsInRange(SelectedImageIndex, 0, UnindexedImagesCount -1))
+                            {
+                                // Set the SelectedImage
+                                SelectedImage = UnindexedImages[SelectedImageIndex];
                             }
                         }
-
-                        if (SelectedImageIndex >= UnindexedImagesCount)
+                        else
                         {
-                            // Subtract 1
-                            SelectedImageIndex = UnindexedImagesCount - 1;
-                        }
+                            // Erase
+                            SelectedImage = null;
 
-                        // Setup the labels
-                        ImageStatsLabel.Text = "Image " + (SelectedImageIndex + 1) + " of " + UnindexedImagesCount;
+                            // Setup the labels
+                            ImageStatsLabel.Text = "No Images Found";
 
-                        // if the index is in range
-                        if (NumericHelper.IsInRange(SelectedImageIndex, 0, UnindexedImagesCount -1))
-                        {
-                            // Set the SelectedImage
-                            SelectedImage = UnindexedImages[SelectedImageIndex];
+                            // Show all caught up
+                            ImagePreview.BackgroundImage = Properties.Resources.AllCaughtUp;
                         }
                     }
                     else
                     {
-                        // if was passed in to this method
-                        if (selectedImageIndex >= 0)
+                        if (AllImagesCount > 0)
                         {
-                            // Ensure Index Exists
-                            if (NumericHelper.IsInRange(selectedImageIndex, 0, AllImagesCount))
+                            // if was passed in to this method
+                            if (selectedImageIndex >= 0)
                             {
-                                // Set the Property
-                                SelectedImageIndex = selectedImageIndex;
+                                // Ensure Index Exists
+                                if (NumericHelper.IsInRange(selectedImageIndex, 0, AllImagesCount))
+                                {
+                                    // Set the Property
+                                    SelectedImageIndex = selectedImageIndex;
+                                }
+                                else
+                                {
+                                    // Reset to 0
+                                    SelectedImageIndex = 0;
+                                }
                             }
-                            else
+
+                            // Setup the labels
+                            ImageStatsLabel.Text = "Image " + (SelectedImageIndex + 1) + " of " + AllImagesCount;
+
+                            // if the index is in range
+                            if (NumericHelper.IsInRange(SelectedImageIndex, 0, AllImagesCount -1))
                             {
-                                // Reset to 0
-                                SelectedImageIndex = 0;
+                                // Set the SelectedImage
+                                SelectedImage = AllImages[SelectedImageIndex];
                             }
                         }
-
-                        // Setup the labels
-                        ImageStatsLabel.Text = "Image " + (SelectedImageIndex + 1) + " of " + AllImagesCount;
-
-                        // if the index is in range
-                        if (NumericHelper.IsInRange(SelectedImageIndex, 0, AllImagesCount -1))
+                        else
                         {
-                            // Set the SelectedImage
-                            SelectedImage = AllImages[SelectedImageIndex];
+                            // Erase
+                            SelectedImage = null;
+
+                            // Setup the labels
+                            ImageStatsLabel.Text = "No Images Found";
                         }
                     }
                 }
@@ -1189,6 +1221,8 @@ namespace MemeVault
             {
                 // Show a message
                 ImageStatsLabel.Text = "No Images";
+
+                ImagePreview.BackgroundImage = Properties.Resources.NoImagesFound;
 
                 // Erase
                 ImageNameControl.Text = "";
