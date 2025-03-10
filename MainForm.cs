@@ -997,16 +997,21 @@ namespace MemeVault
             // If the pictureViewer object exists
             if (NullHelper.Exists(pictureViewer))
             {
+                // if a different picture is selected
+                if ((HasSelectedPicture) && (SelectedPicture.Name != pictureViewer.Name))
+                {
+                    // Set the SelectedPicture
+                    SelectedPicture.Selected = false;
+
+                    // erase
+                    SelectedPicture = null;
+                }
+            
                 // If the value for the property pictureViewer.Selected is true
                 if (pictureViewer.Selected)
                 {
                     // Set the SelectedPicture
                     SelectedPicture = pictureViewer;
-                }
-                else if ((HasSelectedPicture) && (SelectedPicture.Name == pictureViewer.Name))
-                {
-                    // erase
-                    SelectedPicture = null;
                 }
             }
 
